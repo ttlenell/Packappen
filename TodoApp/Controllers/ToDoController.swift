@@ -65,7 +65,8 @@ class TodoController: UITableViewController {
             
             self.tableView.insertRows(at: [indexPath], with: .automatic)
             
-
+            // save
+            DoUtility.save(self.doStore.doList)
         }
         
         addAction.isEnabled = false
@@ -92,8 +93,6 @@ class TodoController: UITableViewController {
     @objc private func handleTextChanged(_ sender: UITextField) {
         
         // grab alert controller and add action
-        // hej
-        
         
         guard let alertController = presentedViewController as? UIAlertController,
             let addAction = alertController.actions.first,
@@ -164,7 +163,9 @@ extension TodoController {
                 // reload table view
                 tableView.deleteRows(at: [indexPath], with: .automatic)
                 
-
+                // save
+                DoUtility.save(self.doStore.doList)
+                
                 // indicate that the action was performed
                 completionHandler(true)
             }
@@ -194,7 +195,9 @@ extension TodoController {
                 // reload table view
                 tableView.insertRows(at: [IndexPath(row: 0, section: 1)], with: .automatic)
                 
-
+                // save
+                DoUtility.save(self.doStore.doList)
+                
                 // indicate the action was performed
                 completionHandler(true)
             }
