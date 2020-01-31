@@ -92,6 +92,8 @@ class TodoController: UITableViewController {
     @objc private func handleTextChanged(_ sender: UITextField) {
         
         // grab alert controller and add action
+        // hej
+        
         
         guard let alertController = presentedViewController as? UIAlertController,
             let addAction = alertController.actions.first,
