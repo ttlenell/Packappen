@@ -19,6 +19,7 @@ class ListViewController: UIViewController {
         super.viewDidLoad()
         
             trips = TripDataAcess.fetchTrips()
+        listView.dataSource = self as? UITableViewDataSource
         
         if #available(iOS 13.0, *) {
             let navBarAppearance = UINavigationBarAppearance()
