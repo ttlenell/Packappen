@@ -10,10 +10,11 @@ import UIKit
 
 class ListViewController: UIViewController {
     
-    var trips = [Trip]()
-    
-     var newTrips = [Trip]()
+    var trips = [Trip]() 
+      
+     
 
+    @IBOutlet weak var listView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,11 +50,11 @@ class ListViewController: UIViewController {
                 guard let trip = TripDataAcess.createTrip(name: name) else {return}
             
                 // add item to tableview
-                self.newTrips.insert(trip, at: 0)
+                self.trips.insert(trip, at: 0)
                 
                 let indexPath = IndexPath(row: 0, section: 0)
                 
-                 self.tableView.insertRows(at: [indexPath], with: .automatic)
+                self.listView.insertRows(at: [indexPath], with: .automatic)
                 
 
             }
@@ -98,12 +99,29 @@ class ListViewController: UIViewController {
           return 60
     }
      func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
         guard let sectionHeader = Bundle.main.loadNibNamed(SectionHeader.className, owner: nil, options: nil)?.first as? SectionHeader else {return nil}
-        if section == 0 {
+        
             sectionHeader.setTitle(title: "Trips!")
-        }
+        
         return sectionHeader
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
+        
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+                
+            if section == 0 {
+                
+                
         }
+            return trips.count
+        
+        }
+        
+
     
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -112,11 +130,12 @@ class ListViewController: UIViewController {
             return UITableViewCell()
             
         }
-        var trip: Trip
-        if indexPath.section == 0 {
-            trip = self.newTrips[indexPath.row]
             
-        }
+        var trip: Trip
+        
+            trip = self.trips[indexPath.row]
+            
+        
         cell.trip = trip
         return cell
             
