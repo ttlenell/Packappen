@@ -25,8 +25,8 @@ class Task: NSObject, NSCoding {
     
     func encode(with aCoder: NSCoder) {
         
-        aCoder.encode(name, forKey: "nameKey")
-        aCoder.encode(isDone, forKey: "isDoneKey")
+        aCoder.encode(name, forKey: nameKey)
+        aCoder.encode(isDone, forKey: isDoneKey)
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -22,8 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    // initialize DoStore
-    let doStore = DoStore()
+ 
 
 
 
@@ -33,14 +32,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 
-        // Grab the ToDoController
-        let doController = window?.rootViewController?.children.first as? TodoController
-
-        if doController == nil {
-            print("doController nil")
-        }
-        // set the DoStore accordingly
-        doController?.doStore = doStore
+//        // Grab the ToDoController
+//        let doController = window?.rootViewController?.children.first as? TodoController
+//
+//       if doController == nil {
+//          print("doController nil")
+//       }
+//
+//        // set the DoStore accordingly
+//        doController?.doStore = doStore
 
 
 

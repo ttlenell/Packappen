@@ -10,34 +10,37 @@ import UIKit
 
 class TodoController: UITableViewController {
     
-    var doStore: DoStore!
-    {
+   
+  
+    var items = [Item]() {
         didSet {
-            // get data
-            doStore.doList = DoUtility.fetch() ?? [[Task](), [Task]()]
-
-            // reload table view
-            tableView.reloadData()
-
-
+            completedItems = items.filter { (item) -> Bool in
+                return item.isDone
+            
+            }
+            
+            incompletedItems = items.filter { (item) -> Bool in
+                       return !item.isDone
+            }
         }
     }
+    var completedItems = [Item]()
+    
+    var incompletedItems = [Item]()
 
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        items = ItemDataAcess.fetchItems()
         
-        doStore = DoStore()
         
         if #available(iOS 13.0, *) {
             let navBarAppearance = UINavigationBarAppearance()
             navBarAppearance.configureWithOpaqueBackground()
             navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
             navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-            navBarAppearance.backgroundColor = UIColor.blue
+            navBarAppearance.backgroundColor = UIColor(named: "Blue")
             navigationController?.navigationBar.standardAppearance = navBarAppearance
             navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         }
@@ -54,19 +57,18 @@ class TodoController: UITableViewController {
             // grab text field text
             guard let name = alertController.textFields?.first?.text else {return}
             
-            // create task
-            let newTask = Task(name: name)
-            
-            // add task
-            self.doStore.addTask(newTask, at: 0)
-            // reload data in table view
+
+            // create item in coredata
+            guard let item = ItemDataAcess.createItem(name: name) else {return}
+        
+            // add item to tableview
+            self.incompletedItems.insert(item, at: 0)
             
             let indexPath = IndexPath(row: 0, section: 0)
             
             self.tableView.insertRows(at: [indexPath], with: .automatic)
             
-            // save
-            DoUtility.save(self.doStore.doList)
+
         }
         
         addAction.isEnabled = false
@@ -100,6 +102,7 @@ class TodoController: UITableViewController {
             else {return}
         
         // Enable add action based on if text is empty or contains whitespace
+        
         addAction.isEnabled = !text.trimmingCharacters(in: .whitespaces).isEmpty
     }
 }
@@ -109,30 +112,49 @@ class TodoController: UITableViewController {
 // MARK: - DataSource
 extension TodoController {
     
-
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-            
-        return section == 0 ? "To be packed" : "Packed"
+    // sets height for sections 0 and 1, "to be packed" and "packed"
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+          return 60
     }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let sectionHeader = Bundle.main.loadNibNamed(SectionHeader.className, owner: nil, options: nil)?.first as? SectionHeader else {return nil}
+        if section == 0 {
+            sectionHeader.setTitle(title: "To be packed")
+        } else {
+            sectionHeader.setTitle(title: "Packed")
+        }
+        return sectionHeader
+    }
 
-        
-        return doStore.doList.count
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 2 // will always just be two sections
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             
-        return doStore.doList[section].count
-        
+        if section == 0 {
+            return incompletedItems.count
+            
+        } else {
+            return completedItems.count
+            }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
-        cell.textLabel?.text = doStore.doList[indexPath.section][indexPath.row].name
-        
+
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ItemCell else {
+            return UITableViewCell()
+            
+        }
+        var item: Item
+        if indexPath.section == 0 {
+            item = self.incompletedItems[indexPath.row]
+            
+        } else {
+            item = self.completedItems[indexPath.row]
+        }
+        cell.item = item
         return cell
             
     }
@@ -145,28 +167,31 @@ extension TodoController {
 //MARK: - Delegate
     extension TodoController {
         
-        override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-            54
-        }
+
         
         override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
             
             let deleteAction = UIContextualAction(style: .destructive, title: nil) { (action, sourceView, completionHandler) in
                 
-                // determine whether the task "isDone"
-                guard let isDone =  self.doStore.doList[indexPath.section][indexPath.row].isDone
-                    else {return}
+               
                 
                 // remove task from correct array
-                self.doStore.removeTask(at: indexPath.row, isDone: isDone)
+                var item: Item
+                if indexPath.section == 0 {
+                    item = self.incompletedItems.remove(at: indexPath.row)
+                    
+                } else {
+                    item = self.completedItems.remove(at: indexPath.row)
+                }
+                
+                ItemDataAcess.removeItem(item: item)
                 
                 // reload table view
+                
                 tableView.deleteRows(at: [indexPath], with: .automatic)
-                
-                // save
-                DoUtility.save(self.doStore.doList)
-                
+
                 // indicate that the action was performed
+                
                 completionHandler(true)
             }
             
@@ -178,25 +203,31 @@ extension TodoController {
         
         override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
             
+            if indexPath.section == 1 {
+                return nil
+            }
+            
             let doneAction = UIContextualAction(style: .normal, title: nil) { (action, sourceView, completionHandler) in
                 
                 // toggle that the task is done
-                self.doStore.doList[0][indexPath.row].isDone = true
                 
-                // remove the task from the array todo
-                let doneTask = self.doStore.removeTask(at: indexPath.row)
                 
-                // reload table view
+                ItemDataAcess.setItemDone(item: self.incompletedItems[indexPath.row])
+                
+            
+                // removes item from the array todo
+               let item = self.incompletedItems.remove(at: indexPath.row)
+                
+                // removes item from table view
                 tableView.deleteRows(at: [indexPath], with: .automatic)
                 
-                // add the task to the array done
-                self.doStore.addTask(doneTask, at: 0, isDone: true)
+                // add the task to the array completedItems
+                self.completedItems.insert(item, at: 0)
                 
                 // reload table view
                 tableView.insertRows(at: [IndexPath(row: 0, section: 1)], with: .automatic)
                 
-                // save
-                DoUtility.save(self.doStore.doList)
+
                 
                 // indicate the action was performed
                 completionHandler(true)
@@ -205,7 +236,7 @@ extension TodoController {
             doneAction.image = #imageLiteral(resourceName: "done")
             doneAction.backgroundColor = #colorLiteral(red: 0.01176470588, green: 0.7529411765, blue: 0.2901960784, alpha: 1)
             
-            return indexPath.section == 0 ? UISwipeActionsConfiguration(actions: [doneAction]) : nil
+            return UISwipeActionsConfiguration(actions: [doneAction])
         }
         
     }
