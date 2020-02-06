@@ -8,13 +8,16 @@
 
 import UIKit
 
-class ListViewController: UIViewController,UITableViewDataSource {
+class ListViewController: UIViewController,UITableViewDataSource, UITableViewDelegate {
+    
+    
     var trips = [Trip]()
+    var selectedTrip: IndexPath?
+    let tripToItem = "TripToItem"
     
     
     
-    
-    var newTrips = [Trip]()
+    //var newTrips = [Trip]()
     
     
     @IBOutlet weak var listView: UITableView!
@@ -24,6 +27,9 @@ class ListViewController: UIViewController,UITableViewDataSource {
         
         trips = TripDataAcess.fetchTrips()
         
+        
+        
+        listView.delegate = self
         listView.dataSource = self as? UITableViewDataSource
         
         
@@ -129,6 +135,12 @@ class ListViewController: UIViewController,UITableViewDataSource {
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            selectedTrip = indexPath
+        performSegue(withIdentifier: tripToItem, sender: self)
+        
+    }
+    
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -171,6 +183,18 @@ class ListViewController: UIViewController,UITableViewDataSource {
         deleteAction.backgroundColor = #colorLiteral(red: 0.8862745098, green: 0.1450980392, blue: 0.168627451, alpha: 1)
         
         return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == self.tripToItem {
+            guard let selectedTrip = self.selectedTrip else {return}
+            
+          //  guard let row = selectedTrip.row else {return}
+            
+            let destinationVC = segue.destination as! TodoController
+            
+            destinationVC.trip = trips[selectedTrip.row]
+        }
     }
     
 }

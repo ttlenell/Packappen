@@ -7,16 +7,17 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--PackApp-->
+        <!--Todo Controller-->
         <scene sceneID="wec-6Y-YQ6">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2ku-Us-s05" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tableViewController id="iKH-8m-C58" customClass="TodoController" customModule="TodoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="geB-Ml-wb0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" id="oXX-be-Hdl" customClass="ItemCell" customModule="TodoApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell1" id="oXX-be-Hdl" customClass="ItemCell" customModule="TodoApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oXX-be-Hdl" id="lzh-7I-6r8">
@@ -25,23 +26,60 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="iKH-8m-C58" id="gZo-gC-14w"/>
-                            <outlet property="delegate" destination="iKH-8m-C58" id="AJw-2b-f4O"/>
-                        </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="PackApp" id="2Xn-eN-5AB">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="kGa-Xv-sjK">
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="2497" y="1000"/>
+        </scene>
+        <!--Todo Controller-->
+        <scene sceneID="wlf-YM-mGV">
+            <objects>
+                <viewController id="2bS-fn-pzi" customClass="TodoController" customModule="TodoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0mY-de-rnO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="WtA-7I-gkf">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="673"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellID" id="YDf-Fa-hZn" customClass="ItemCell" customModule="TodoApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YDf-Fa-hZn" id="3E5-fW-x29">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="k2r-mu-Ece" firstAttribute="bottom" secondItem="WtA-7I-gkf" secondAttribute="bottom" id="8Ci-fz-ace"/>
+                            <constraint firstItem="k2r-mu-Ece" firstAttribute="trailing" secondItem="WtA-7I-gkf" secondAttribute="trailing" id="ESe-jq-BJv"/>
+                            <constraint firstItem="WtA-7I-gkf" firstAttribute="leading" secondItem="k2r-mu-Ece" secondAttribute="leading" id="oho-ma-jMj"/>
+                            <constraint firstItem="WtA-7I-gkf" firstAttribute="top" secondItem="k2r-mu-Ece" secondAttribute="top" id="zYo-UM-TxV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="k2r-mu-Ece"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ofE-XM-4rW">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="is6-oZ-5lc">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="addTask:" destination="iKH-8m-C58" id="TVq-UJ-sOD"/>
+                                <action selector="addTask:" destination="2bS-fn-pzi" id="SHH-bW-Zez"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2ku-Us-s05" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                    <connections>
+                        <outlet property="itemView" destination="WtA-7I-gkf" id="vtv-7G-E7h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hlG-H1-ICm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2900" y="658"/>
+            <point key="canvasLocation" x="3720" y="555"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3YM-ZN-ElI">
@@ -52,6 +90,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -108,6 +147,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="listView" destination="bat-Kc-Gat" id="RCF-x1-pH9"/>
+                        <segue destination="2bS-fn-pzi" kind="show" identifier="TripToItem" id="uea-gm-0Eo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sss-RB-xhq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

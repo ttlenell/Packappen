@@ -8,10 +8,13 @@
 
 import UIKit
 
-class TodoController: UITableViewController {
+class TodoController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-   
+
   
+    @IBOutlet weak var itemView: UITableView!
+    
+    var trip: Trip?
     var items = [Item]() {
         didSet {
             completedItems = items.filter { (item) -> Bool in
@@ -31,6 +34,9 @@ class TodoController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        itemView.delegate = self
+        itemView.dataSource = self as? UITableViewDataSource
         
         items = ItemDataAcess.fetchItems()
         
@@ -66,7 +72,7 @@ class TodoController: UITableViewController {
             
             let indexPath = IndexPath(row: 0, section: 0)
             
-            self.tableView.insertRows(at: [indexPath], with: .automatic)
+            self.itemView.insertRows(at: [indexPath], with: .automatic)
             
 
         }
@@ -113,10 +119,10 @@ class TodoController: UITableViewController {
 extension TodoController {
     
     // sets height for sections 0 and 1, "to be packed" and "packed"
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
           return 60
     }
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let sectionHeader = Bundle.main.loadNibNamed(SectionHeader.className, owner: nil, options: nil)?.first as? SectionHeader else {return nil}
         if section == 0 {
             sectionHeader.setTitle(title: "To be packed")
@@ -126,11 +132,12 @@ extension TodoController {
         return sectionHeader
     }
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 2 // will always just be two sections
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             
         if section == 0 {
             return incompletedItems.count
@@ -140,10 +147,10 @@ extension TodoController {
             }
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
 
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ItemCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as? ItemCell else {
             return UITableViewCell()
             
         }
@@ -169,7 +176,7 @@ extension TodoController {
         
 
         
-        override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
             
             let deleteAction = UIContextualAction(style: .destructive, title: nil) { (action, sourceView, completionHandler) in
                 
@@ -201,7 +208,7 @@ extension TodoController {
             return UISwipeActionsConfiguration(actions: [deleteAction])
         }
         
-        override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
             
             if indexPath.section == 1 {
                 return nil
