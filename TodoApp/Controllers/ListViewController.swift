@@ -8,19 +8,25 @@
 
 import UIKit
 
-class ListViewController: UIViewController {
+class ListViewController: UIViewController,UITableViewDataSource {
+    var trips = [Trip]()
     
-    var trips = [Trip]() 
-      
-     
-
+    
+    
+    
+    var newTrips = [Trip]()
+    
+    
     @IBOutlet weak var listView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-            trips = TripDataAcess.fetchTrips()
+        trips = TripDataAcess.fetchTrips()
+        
         listView.dataSource = self as? UITableViewDataSource
+        
+        
         
         if #available(iOS 13.0, *) {
             let navBarAppearance = UINavigationBarAppearance()
@@ -31,56 +37,56 @@ class ListViewController: UIViewController {
             navigationController?.navigationBar.standardAppearance = navBarAppearance
             navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         }
-       
+        
     }
     
     @IBAction func addTrip(_ sender: UIBarButtonItem) {
         
         
+        
+        // alert controller
+        let alertController = UIAlertController(title: "Add new trip", message: nil, preferredStyle: .alert)
+        
+        // set up actions
+        let addAction = UIAlertAction(title: "Add", style: .default) { _ in
             
-            // alert controller
-            let alertController = UIAlertController(title: "Add new trip", message: nil, preferredStyle: .alert)
-            
-            // set up actions
-            let addAction = UIAlertAction(title: "Add", style: .default) { _ in
-            
-                // grab text field text
-                guard let name = alertController.textFields?.first?.text else {return}
-                
-
-                // create item in coredata
-                guard let trip = TripDataAcess.createTrip(name: name) else {return}
-            
-                // add item to tableview
-                self.trips.insert(trip, at: 0)
-                
-                let indexPath = IndexPath(row: 0, section: 0)
-                
-                self.listView.insertRows(at: [indexPath], with: .automatic)
-                
-
-            }
-            
-            addAction.isEnabled = false
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            
-            // add textfield for input to alert controller
-            alertController.addTextField { textfield in
-                
-                textfield.placeholder = "Enter a new trip"
-                textfield.addTarget(self, action: #selector(self.handleTextChanged), for: .editingChanged)
-            }
-            // add actions to alert controller
-            alertController.addAction(addAction)
-            alertController.addAction(cancelAction)
+            // grab text field text
+            guard let name = alertController.textFields?.first?.text else {return}
             
             
-            // present alert controller
+            // create item in coredata
+            guard let trip = TripDataAcess.createTrip(name: name) else {return}
             
-            present(alertController, animated: true)
+            // add item to tableview
+            self.trips.insert(trip, at: 0)
+            
+            let indexPath = IndexPath(row: 0, section: 0)
+            
+            self.listView.insertRows(at: [indexPath], with: .automatic)
+            
             
         }
+        
+        addAction.isEnabled = false
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        // add textfield for input to alert controller
+        alertController.addTextField { textfield in
+            
+            textfield.placeholder = "Enter a new trip"
+            textfield.addTarget(self, action: #selector(self.handleTextChanged), for: .editingChanged)
+        }
+        // add actions to alert controller
+        alertController.addAction(addAction)
+        alertController.addAction(cancelAction)
+        
+        
+        // present alert controller
+        
+        present(alertController, animated: true)
+        
+    }
     
     @objc private func handleTextChanged(_ sender: UITextField) {
         
@@ -98,55 +104,79 @@ class ListViewController: UIViewController {
     
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-          return 60
+        return 60
     }
-     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         guard let sectionHeader = Bundle.main.loadNibNamed(SectionHeader.className, owner: nil, options: nil)?.first as? SectionHeader else {return nil}
         
-            sectionHeader.setTitle(title: "Trips!")
+        sectionHeader.setTitle(title: "Trips!")
         
         return sectionHeader
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 1
     }
-        
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-                
-            if section == 0 {
-                
-                
-        }
-            return trips.count
-        
-        }
-        
-
     
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-
+        if section == 0 {
+            
+            
+        }
+        return trips.count
+        
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? DataCell else {
             return UITableViewCell()
             
         }
-            
+        
         var trip: Trip
         
-            trip = self.trips[indexPath.row]
-            
+        trip = self.trips[indexPath.row]
+        
         
         cell.trip = trip
         return cell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: nil) { (action, sourceView, completionHandler) in
             
-    }
+            var trip: Trip
+  
+            trip = self.trips.remove(at: indexPath.row)
+            
+
+            TripDataAcess.removeTrip(trip: trip)
+   
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+            // indicate that the action was performed
+            
+            completionHandler(true)
+        }
         
-    }
+        deleteAction.image = #imageLiteral(resourceName: "delete")
+        deleteAction.backgroundColor = #colorLiteral(red: 0.8862745098, green: 0.1450980392, blue: 0.168627451, alpha: 1)
         
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
     
-    
+}
+
+
+
 
 
 
