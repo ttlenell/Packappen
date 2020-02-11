@@ -40,15 +40,20 @@ class TodoController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         items = ItemDataAcess.fetchItems()
         
+        //self.title =
+        
         
         if #available(iOS 13.0, *) {
             let navBarAppearance = UINavigationBarAppearance()
+            
             navBarAppearance.configureWithOpaqueBackground()
             navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
             navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
             navBarAppearance.backgroundColor = UIColor(named: "Blue")
             navigationController?.navigationBar.standardAppearance = navBarAppearance
             navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+            
+           
         }
     }
     
@@ -208,6 +213,8 @@ extension TodoController {
             return UISwipeActionsConfiguration(actions: [deleteAction])
         }
         
+        
+        
         func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
             
             if indexPath.section == 1 {
@@ -245,6 +252,8 @@ extension TodoController {
             
             return UISwipeActionsConfiguration(actions: [doneAction])
         }
+        
+   
         
     }
     

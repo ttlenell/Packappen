@@ -4,14 +4,15 @@
         <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="isDone" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="trips" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="trips" inverseEntity="Item"/>
+        <relationship name="items" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Trip" inverseName="trips" inverseEntity="Trip"/>
     </entity>
     <entity name="Trip" representedClassName="Trip" syncable="YES" codeGenerationType="class">
         <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="trips" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Item" inverseName="items" inverseEntity="Item"/>
     </entity>
     <elements>
         <element name="Item" positionX="160" positionY="192" width="128" height="103"/>
-        <element name="Trip" positionX="-54" positionY="18" width="128" height="73"/>
+        <element name="Trip" positionX="-54" positionY="18" width="128" height="88"/>
     </elements>
 </model>

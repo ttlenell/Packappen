@@ -139,6 +139,8 @@ class ListViewController: UIViewController,UITableViewDataSource, UITableViewDel
             selectedTrip = indexPath
         performSegue(withIdentifier: tripToItem, sender: self)
         
+        
+        
     }
     
     
@@ -187,13 +189,16 @@ class ListViewController: UIViewController,UITableViewDataSource, UITableViewDel
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == self.tripToItem {
+            
             guard let selectedTrip = self.selectedTrip else {return}
             
-          //  guard let row = selectedTrip.row else {return}
+    
+            let destinationVC = segue.destination as? TodoController
             
-            let destinationVC = segue.destination as! TodoController
+            destinationVC?.trip = trips[selectedTrip.row]
+
+           
             
-            destinationVC.trip = trips[selectedTrip.row]
         }
     }
     
