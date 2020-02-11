@@ -17,8 +17,7 @@ class ListViewController: UIViewController,UITableViewDataSource, UITableViewDel
     
     
     
-    //var newTrips = [Trip]()
-    
+      
     
     @IBOutlet weak var listView: UITableView!
     
@@ -26,6 +25,7 @@ class ListViewController: UIViewController,UITableViewDataSource, UITableViewDel
         super.viewDidLoad()
         
         trips = TripDataAcess.fetchTrips()
+        self.title = "PackApp"
         
         
         

@@ -18,14 +18,16 @@ class ItemDataAcess {
         return delegate.persistentContainer.viewContext
     }
     
-   static func createItem(name: String) -> Item? {
+    static func createItem(name: String, trip: Trip) -> Item? {
         
         guard let context = context else {return nil}
         
         guard let entity = NSEntityDescription.entity(forEntityName: Item.className, in: context) else {return nil}
         
         guard let  object = NSManagedObject(entity: entity, insertInto: context) as? Item else {return nil}
+    
         
+        object.trip = trip
         object.name = name
         object.isDone = false
         object.created = Date()

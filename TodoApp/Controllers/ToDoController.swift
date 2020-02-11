@@ -38,9 +38,12 @@ class TodoController: UIViewController, UITableViewDataSource, UITableViewDelega
         itemView.delegate = self
         itemView.dataSource = self as? UITableViewDataSource
         
-        items = ItemDataAcess.fetchItems()
+        // items = ItemDataAcess.fetchItems()
         
-        //self.title =
+        items = trip?.items?.array as! [Item]
+        
+        self.title = trip?.name
+        
         
         
         if #available(iOS 13.0, *) {
@@ -59,6 +62,8 @@ class TodoController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBAction func addTask(_ sender: UIBarButtonItem) {
         
+        guard let trip = trip else {return}
+        
         // alert controller
         let alertController = UIAlertController(title: "Add packing item", message: nil, preferredStyle: .alert)
         
@@ -70,7 +75,7 @@ class TodoController: UIViewController, UITableViewDataSource, UITableViewDelega
             
 
             // create item in coredata
-            guard let item = ItemDataAcess.createItem(name: name) else {return}
+            guard let item = ItemDataAcess.createItem(name: name, trip: trip) else {return}
         
             // add item to tableview
             self.incompletedItems.insert(item, at: 0)

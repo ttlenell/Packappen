@@ -20,7 +20,6 @@
 		2FCF3ED023E9D05900EF0E16 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF3ECF23E9D05900EF0E16 /* SectionHeader.swift */; };
 		2FCF3ED223E9D07400EF0E16 /* SectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FCF3ED123E9D07400EF0E16 /* SectionHeader.xib */; };
 		2FCF3EDD23EAC24D00EF0E16 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF3EDB23EAC24D00EF0E16 /* ListViewController.swift */; };
-		2FCF3EDE23EAC24D00EF0E16 /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FCF3EDC23EAC24D00EF0E16 /* ListViewController.xib */; };
 		2FCF3EE023EACE4A00EF0E16 /* TripDataAcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF3EDF23EACE4A00EF0E16 /* TripDataAcess.swift */; };
 		2FCF3EE223EAD33100EF0E16 /* DataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF3EE123EAD33100EF0E16 /* DataCell.swift */; };
 /* End PBXBuildFile section */
@@ -41,7 +40,6 @@
 		2FCF3ECF23E9D05900EF0E16 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		2FCF3ED123E9D07400EF0E16 /* SectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeader.xib; sourceTree = "<group>"; };
 		2FCF3EDB23EAC24D00EF0E16 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		2FCF3EDC23EAC24D00EF0E16 /* ListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListViewController.xib; sourceTree = "<group>"; };
 		2FCF3EDF23EACE4A00EF0E16 /* TripDataAcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDataAcess.swift; sourceTree = "<group>"; };
 		2FCF3EE123EAD33100EF0E16 /* DataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,7 +69,6 @@
 				2FCF3ECF23E9D05900EF0E16 /* SectionHeader.swift */,
 				2FCF3ED123E9D07400EF0E16 /* SectionHeader.xib */,
 				2FCF3EDB23EAC24D00EF0E16 /* ListViewController.swift */,
-				2FCF3EDC23EAC24D00EF0E16 /* ListViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -189,7 +186,6 @@
 			files = (
 				2FCF3ED223E9D07400EF0E16 /* SectionHeader.xib in Resources */,
 				2FBCE03023DCD79000CBD73D /* LaunchScreen.storyboard in Resources */,
-				2FCF3EDE23EAC24D00EF0E16 /* ListViewController.xib in Resources */,
 				2FBCE02D23DCD79000CBD73D /* Assets.xcassets in Resources */,
 				2FBCE02823DCD78E00CBD73D /* Main.storyboard in Resources */,
 			);
