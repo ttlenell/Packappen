@@ -59,8 +59,14 @@ class TodoController: UIViewController, UITableViewDataSource, UITableViewDelega
            
         }
     }
+    @IBAction func changeTripName(_ sender: UIButton) {
+        
+        
+    }
     
     @IBAction func addTask(_ sender: UIBarButtonItem) {
+        
+        
         
         guard let trip = trip else {return}
         
@@ -170,6 +176,8 @@ extension TodoController {
             
         } else {
             item = self.completedItems[indexPath.row]
+           
+            
         }
         cell.item = item
         return cell

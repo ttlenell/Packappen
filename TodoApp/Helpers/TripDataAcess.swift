@@ -57,7 +57,8 @@ class TripDataAcess {
             }
             
             return results
-        }   catch {print(error)
+        }   catch {
+            print(error)
             return []
         }
         

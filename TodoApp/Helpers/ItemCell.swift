@@ -23,9 +23,10 @@ class ItemCell: UITableViewCell {
         
         
         
-        backgroundColor = UIColor.clear
-        contentView.layer.borderWidth = 2.0
+        backgroundColor = UIColor.white
+       // contentView.layer.borderWidth = 2.0
         contentView.layer.cornerRadius = 20
+        
 
         
     }
