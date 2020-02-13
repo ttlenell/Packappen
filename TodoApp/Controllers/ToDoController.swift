@@ -44,6 +44,9 @@ class TodoController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         self.title = trip?.name
         
+        self.isEditing = true
+
+        
         
         
         if #available(iOS 13.0, *) {
@@ -136,7 +139,7 @@ extension TodoController {
     
     // sets height for sections 0 and 1, "to be packed" and "packed"
      func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-          return 60
+          return 58
     }
      func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let sectionHeader = Bundle.main.loadNibNamed(SectionHeader.className, owner: nil, options: nil)?.first as? SectionHeader else {return nil}
@@ -152,7 +155,7 @@ extension TodoController {
         return 2 // will always just be two sections
     }
     
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             
         if section == 0 {

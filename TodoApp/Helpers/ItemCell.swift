@@ -13,6 +13,14 @@ class ItemCell: UITableViewCell {
     var item: Item? {
         didSet {
             textLabel?.text = item?.name
+
+            if item?.isDone == true {
+                
+                backgroundColor = #colorLiteral(red: 0.4747263789, green: 0.7589706779, blue: 0.3847932816, alpha: 1)
+            } else if item?.isDone == false {
+                
+                backgroundColor = UIColor.white
+            }
             
         }
     }
@@ -22,10 +30,9 @@ class ItemCell: UITableViewCell {
         // Initialization code
         
         
-        
-        backgroundColor = UIColor.white
-       // contentView.layer.borderWidth = 2.0
-        contentView.layer.cornerRadius = 20
+        contentView.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        contentView.layer.borderWidth = 2.0
+      
         
 
         
