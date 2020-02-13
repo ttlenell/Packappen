@@ -64,6 +64,9 @@ class TodoController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     @IBAction func changeTripName(_ sender: UIButton) {
         
+        var tripName = trip
+        tripName?.name
+        
         
     }
     
@@ -230,12 +233,71 @@ extension TodoController {
         }
         
         
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            
+ 
+            
+            
+                // guard let trip = trip else {return}
+                
+                // alert controller
+                let alertController = UIAlertController(title: "Change item name", message: nil, preferredStyle: .alert)
+                
+                // set up actions
+                let addAction = UIAlertAction(title: "Change", style: .default) { _ in
+                    
+                    
+                
+                    // grab text field text
+                    guard let name = alertController.textFields?.first?.text else {return}
+                    
+                    
+                    
+                    
+                    
+
+//                    // create item in coredata
+//                    guard let item = ItemDataAcess.createItem(name: name, trip: trip) else {return}
+//
+//                    // add item to tableview
+//                    self.incompletedItems.insert(item, at: 0)
+//
+//                    let indexPath = IndexPath(row: 0, section: 0)
+//
+//                    self.itemView.insertRows(at: [indexPath], with: .automatic)
+                    
+
+                }
+                
+                addAction.isEnabled = false
+                
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                
+                // add textfield for input to alert controller
+                alertController.addTextField { textfield in
+                    
+                    textfield.placeholder = "Change a item name"
+                    textfield.addTarget(self, action: #selector(self.handleTextChanged), for: .editingChanged)
+                }
+                // add actions to alert controller
+                alertController.addAction(addAction)
+                alertController.addAction(cancelAction)
+                
+                
+                // present alert controller
+                
+                present(alertController, animated: true)
+                
+            
+            
+        }
         
         func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
             
             if indexPath.section == 1 {
                 return nil
             }
+            
             
             let doneAction = UIContextualAction(style: .normal, title: nil) { (action, sourceView, completionHandler) in
                 

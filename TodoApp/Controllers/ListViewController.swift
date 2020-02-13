@@ -60,10 +60,10 @@ class ListViewController: UIViewController,UITableViewDataSource, UITableViewDel
             guard let name = alertController.textFields?.first?.text else {return}
             
             
-            // create item in coredata
+            // create item in core data
             guard let trip = TripDataAcess.createTrip(name: name) else {return}
             
-            // add item to tableview
+            // add item to table view
             self.trips.insert(trip, at: 0)
             
             let indexPath = IndexPath(row: 0, section: 0)
