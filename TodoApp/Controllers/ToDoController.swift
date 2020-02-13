@@ -236,7 +236,8 @@ extension TodoController {
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             
  
-            
+            var item: Item
+            item = self.incompletedItems[indexPath.row]
             
                 // guard let trip = trip else {return}
                 
@@ -250,9 +251,14 @@ extension TodoController {
                 
                     // grab text field text
                     guard let name = alertController.textFields?.first?.text else {return}
+                   
+                    item.name = name
                     
+                    // save item to cre data
                     
+                    tableView.reloadData()
                     
+                    print("nytt namn test")
                     
                     
 
@@ -265,7 +271,6 @@ extension TodoController {
 //                    let indexPath = IndexPath(row: 0, section: 0)
 //
 //                    self.itemView.insertRows(at: [indexPath], with: .automatic)
-                    
 
                 }
                 
