@@ -46,6 +46,8 @@ class ListViewController: UIViewController,UITableViewDataSource, UITableViewDel
         
     }
     
+    viewvillappear
+    
     @IBAction func addTrip(_ sender: UIBarButtonItem) {
         
         

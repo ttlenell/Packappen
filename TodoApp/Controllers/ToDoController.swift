@@ -44,7 +44,7 @@ class TodoController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         self.title = trip?.name
         
-        self.isEditing = true
+
 
         
         
@@ -62,11 +62,59 @@ class TodoController: UIViewController, UITableViewDataSource, UITableViewDelega
            
         }
     }
+  
+    
     @IBAction func changeTripName(_ sender: UIButton) {
         
-        var tripName = trip
-        tripName?.name
-        
+
+                   var trip: Trip
+                trip = self.trip!
+                   
+                       // guard let trip = trip else {return}
+                       
+                       // alert controller
+                       let alertController = UIAlertController(title: "Change trip name", message: nil, preferredStyle: .alert)
+                       
+                       // set up actions
+                       let addAction = UIAlertAction(title: "Change", style: .default) { _ in
+                           
+                           
+                       
+                           // grab text field text
+                           guard let name = alertController.textFields?.first?.text else {return}
+                          
+                           trip.name = name
+                        self.title = name
+                           TripDataAcess.saveContext()
+                           
+                           // save item to cre data
+                        
+                        
+                           
+                           print("ny titel")
+                           
+                       
+                       }
+                       
+                       addAction.isEnabled = false
+                       
+                       let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                       
+                       // add textfield for input to alert controller
+                       alertController.addTextField { textfield in
+                           
+                           textfield.placeholder = "Change a trip's name"
+                           textfield.addTarget(self, action: #selector(self.handleTextChanged), for: .editingChanged)
+                       }
+                       // add actions to alert controller
+                       alertController.addAction(addAction)
+                       alertController.addAction(cancelAction)
+                       
+                       
+                       // present alert controller
+                       
+                       present(alertController, animated: true)
+
         
     }
     
@@ -235,6 +283,10 @@ extension TodoController {
         
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             
+            if indexPath.section == 0 {
+                
+            
+            
  
             var item: Item
             item = self.incompletedItems[indexPath.row]
@@ -253,25 +305,12 @@ extension TodoController {
                     guard let name = alertController.textFields?.first?.text else {return}
                    
                     item.name = name
+                    ItemDataAcess.saveContext()
                     
                     // save item to cre data
                     
                     tableView.reloadData()
-                    
-                    print("nytt namn test")
-                    
-                    
-
-//                    // create item in coredata
-//                    guard let item = ItemDataAcess.createItem(name: name, trip: trip) else {return}
-//
-//                    // add item to tableview
-//                    self.incompletedItems.insert(item, at: 0)
-//
-//                    let indexPath = IndexPath(row: 0, section: 0)
-//
-//                    self.itemView.insertRows(at: [indexPath], with: .automatic)
-
+ 
                 }
                 
                 addAction.isEnabled = false
@@ -294,7 +333,7 @@ extension TodoController {
                 present(alertController, animated: true)
                 
             
-            
+            }
         }
         
         func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

@@ -44,6 +44,10 @@ class ItemDataAcess {
         delegate.saveContext()
     }
     
+    static func refreshItems() {
+        saveContext()
+    }
+    
     static func fetchItems() -> [Item] {
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Item.className)
