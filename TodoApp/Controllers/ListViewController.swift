@@ -46,7 +46,10 @@ class ListViewController: UIViewController,UITableViewDataSource, UITableViewDel
         
     }
     
-    viewvillappear
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+        
+    }
     
     @IBAction func addTrip(_ sender: UIBarButtonItem) {
         
