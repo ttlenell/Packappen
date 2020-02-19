@@ -9,13 +9,9 @@
 import Foundation
 import UIKit
 
-struct SuggestedItem {
-    
-    var suggestedName: String
-    
-    init(suggestedName: String) {
-        self.suggestedName = suggestedName
-    }
+ struct SuggestionSection {
+    var title: String
+    var suggestions: [String]
     
     
 }

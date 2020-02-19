@@ -11,7 +11,7 @@ import UIKit
 class SuggestionViewController: UIViewController, UITableViewDataSource
 {
 
-     var suggestedItems = [SuggestedItem]()
+     var suggestedItems = [SuggestionSection]()
     
 
     override func viewDidLoad() {
@@ -26,12 +26,12 @@ class SuggestionViewController: UIViewController, UITableViewDataSource
         
     }
     
-    let sections: [String: [SuggestedItem]] = {
+    let sections: [(String, [String])] = {
         return [
-            ["Clothes": [SuggestedItem(suggestedName: "Shoes", SuggestedItem(suggestedName: "T-shirt")]],
-            ["Bathroom": [SuggestedItem(suggestedName: "Toothbrush", SuggestedItem(suggestedName: "Lotion")]]
-        ]()
-    }
+            ([SuggestionSection(title: "Clothes", suggestions: "T-shirt", "Pants", "Shoes"), SuggestionSection(title: "Electronics", suggestions: "Charger", "Computer")]),
+            ([SuggestionSection(title: "Bathroom", suggestions: "Toothbrush"), SuggestionSection(title: "Blabla", suggestions: "some blabla")])
+        ]
+    }()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return suggestedItems.count
