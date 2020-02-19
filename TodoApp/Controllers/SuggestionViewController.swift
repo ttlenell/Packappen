@@ -1,0 +1,61 @@
+//
+//  SuggestionViewController.swift
+//  TodoApp
+//
+//  Created by Thomas Lenell on 2020-02-18.
+//  Copyright © 2020 Thomas Lenell. All rights reserved.
+//
+
+import UIKit
+
+class SuggestionViewController: UIViewController, UITableViewDataSource
+{
+
+     var suggestedItems = [SuggestedItem]()
+    
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // self.title = "Choose items to add to trip"
+
+    // tableView.dataSource = self
+        
+
+
+        
+    }
+    
+    let sections: [String: [SuggestedItem]] = {
+        return [
+            ["Clothes": [SuggestedItem(suggestedName: "Shoes", SuggestedItem(suggestedName: "T-shirt")]],
+            ["Bathroom": [SuggestedItem(suggestedName: "Toothbrush", SuggestedItem(suggestedName: "Lotion")]]
+        ]()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return suggestedItems.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as? ItemCell else {
+            return UITableViewCell()
+            
+        }
+
+var section =  sections[indexPath.section]
+       
+        return cell
+    }
+    
+
+
+
+      func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+      }
+    
+
+
+}

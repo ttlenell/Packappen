@@ -10,7 +10,8 @@
 		2F6F02F223E9ACCC00E57F47 /* ItemDataAcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6F02F123E9ACCC00E57F47 /* ItemDataAcess.swift */; };
 		2F6F02F423E9B34F00E57F47 /* NSObject+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6F02F323E9B34F00E57F47 /* NSObject+extensions.swift */; };
 		2F6F02F623E9CB0800E57F47 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6F02F523E9CB0800E57F47 /* ItemCell.swift */; };
-		2FB9D86F23F40CB10035D958 /* PresetItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB9D86E23F40CB10035D958 /* PresetItems.swift */; };
+		2F96E99B23FD38020002B8E9 /* SuggestedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96E99A23FD38020002B8E9 /* SuggestedItem.swift */; };
+		2FB9D8B223FBE3920035D958 /* SuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB9D8B123FBE3920035D958 /* SuggestionViewController.swift */; };
 		2FBCE02123DCD78E00CBD73D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBCE02023DCD78E00CBD73D /* AppDelegate.swift */; };
 		2FBCE02323DCD78E00CBD73D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBCE02223DCD78E00CBD73D /* SceneDelegate.swift */; };
 		2FBCE02823DCD78E00CBD73D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FBCE02623DCD78E00CBD73D /* Main.storyboard */; };
@@ -29,7 +30,8 @@
 		2F6F02F123E9ACCC00E57F47 /* ItemDataAcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDataAcess.swift; sourceTree = "<group>"; };
 		2F6F02F323E9B34F00E57F47 /* NSObject+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+extensions.swift"; sourceTree = "<group>"; };
 		2F6F02F523E9CB0800E57F47 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
-		2FB9D86E23F40CB10035D958 /* PresetItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetItems.swift; sourceTree = "<group>"; };
+		2F96E99A23FD38020002B8E9 /* SuggestedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedItem.swift; sourceTree = "<group>"; };
+		2FB9D8B123FBE3920035D958 /* SuggestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionViewController.swift; sourceTree = "<group>"; };
 		2FBCE01D23DCD78E00CBD73D /* TodoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FBCE02023DCD78E00CBD73D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FBCE02223DCD78E00CBD73D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 		2F1F1CA523E0C20600D9CE15 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2FB9D8B123FBE3920035D958 /* SuggestionViewController.swift */,
 				2FBCE03723DCD7F900CBD73D /* ToDoController.swift */,
 				2FCF3ECF23E9D05900EF0E16 /* SectionHeader.swift */,
 				2FCF3ED123E9D07400EF0E16 /* SectionHeader.xib */,
@@ -80,10 +83,10 @@
 			children = (
 				2F6F02F523E9CB0800E57F47 /* ItemCell.swift */,
 				2F6F02F123E9ACCC00E57F47 /* ItemDataAcess.swift */,
-				2FB9D86E23F40CB10035D958 /* PresetItems.swift */,
 				2F6F02F323E9B34F00E57F47 /* NSObject+extensions.swift */,
 				2FCF3EDF23EACE4A00EF0E16 /* TripDataAcess.swift */,
 				2FCF3EE123EAD33100EF0E16 /* DataCell.swift */,
+				2F96E99A23FD38020002B8E9 /* SuggestedItem.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -206,10 +209,11 @@
 				2F6F02F623E9CB0800E57F47 /* ItemCell.swift in Sources */,
 				2F6F02F423E9B34F00E57F47 /* NSObject+extensions.swift in Sources */,
 				2FBCE02123DCD78E00CBD73D /* AppDelegate.swift in Sources */,
-				2FB9D86F23F40CB10035D958 /* PresetItems.swift in Sources */,
 				2FBCE03823DCD7F900CBD73D /* ToDoController.swift in Sources */,
 				2FCF3EE223EAD33100EF0E16 /* DataCell.swift in Sources */,
+				2F96E99B23FD38020002B8E9 /* SuggestedItem.swift in Sources */,
 				2FCF3EDD23EAC24D00EF0E16 /* ListViewController.swift in Sources */,
+				2FB9D8B223FBE3920035D958 /* SuggestionViewController.swift in Sources */,
 				2FBCE02323DCD78E00CBD73D /* SceneDelegate.swift in Sources */,
 				2F6F02F223E9ACCC00E57F47 /* ItemDataAcess.swift in Sources */,
 				2FBCE02B23DCD78E00CBD73D /* TodoApp.xcdatamodeld in Sources */,

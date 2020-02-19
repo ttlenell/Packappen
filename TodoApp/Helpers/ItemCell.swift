@@ -19,7 +19,7 @@ class ItemCell: UITableViewCell {
                 backgroundColor = #colorLiteral(red: 0.4747263789, green: 0.7589706779, blue: 0.3847932816, alpha: 1)
             } else if item?.isDone == false {
                 
-                backgroundColor = UIColor.white
+                backgroundColor = UIColor.red
             }
             
         }
@@ -29,9 +29,10 @@ class ItemCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        
+        backgroundColor = UIColor.clear
         contentView.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         contentView.layer.borderWidth = 2.0
+        
       
         
 

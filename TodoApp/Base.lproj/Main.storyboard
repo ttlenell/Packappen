@@ -17,7 +17,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleAspectFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="WtA-7I-gkf">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
-                                <color key="backgroundColor" red="0.81318299943073657" green="0.9400177362234986" blue="0.96897417306900024" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cellID" id="YDf-Fa-hZn" customClass="ItemCell" customModule="TodoApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="414" height="43.5"/>
@@ -41,7 +41,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="ofE-XM-4rW">
                         <nil key="title"/>
-                        <button key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bbO-83-1Ou">
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bbO-83-1Ou">
                             <rect key="frame" x="146" y="7" width="122" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Change trip name">
@@ -51,12 +51,20 @@
                                 <action selector="changeTripName:" destination="2bS-fn-pzi" eventType="touchUpInside" id="ext-LC-Atg"/>
                             </connections>
                         </button>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="is6-oZ-5lc">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="addTask:" destination="2bS-fn-pzi" id="SHH-bW-Zez"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="is6-oZ-5lc">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="addTask:" destination="2bS-fn-pzi" id="SHH-bW-Zez"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Presets" style="plain" id="D5Q-aI-z6I">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <segue destination="S1T-l8-V2C" kind="show" id="pix-Sd-v7j"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="itemView" destination="WtA-7I-gkf" id="vtv-7G-E7h"/>
@@ -138,6 +146,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sss-RB-xhq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1982.608695652174" y="239.73214285714283"/>
+        </scene>
+        <!--Suggestion View Controller-->
+        <scene sceneID="bPb-LF-YSu">
+            <objects>
+                <viewController id="S1T-l8-V2C" customClass="SuggestionViewController" customModule="TodoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mZ5-a9-01e">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a8T-ZW-ImO">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="673"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="DbN-gK-HlC">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DbN-gK-HlC" id="k2n-Df-tt3">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="a8T-ZW-ImO" firstAttribute="top" secondItem="ZUJ-Ah-dj6" secondAttribute="top" id="D3U-8o-c9R"/>
+                            <constraint firstItem="ZUJ-Ah-dj6" firstAttribute="trailing" secondItem="a8T-ZW-ImO" secondAttribute="trailing" id="WG5-66-QhI"/>
+                            <constraint firstItem="a8T-ZW-ImO" firstAttribute="leading" secondItem="ZUJ-Ah-dj6" secondAttribute="leading" id="jTy-qI-XzG"/>
+                            <constraint firstItem="ZUJ-Ah-dj6" firstAttribute="bottom" secondItem="a8T-ZW-ImO" secondAttribute="bottom" id="q3T-DL-RzM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ZUJ-Ah-dj6"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="tgV-pC-lRa"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aHy-5p-bVi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4128" y="240"/>
         </scene>
     </scenes>
 </document>

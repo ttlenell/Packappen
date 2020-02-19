@@ -47,7 +47,7 @@ class ListViewController: UIViewController,UITableViewDataSource, UITableViewDel
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.tableView.reloadData()
+        listView.reloadData()
         
     }
     
