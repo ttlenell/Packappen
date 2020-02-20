@@ -21,14 +21,13 @@ class SuggestionViewController: UIViewController, UITableViewDataSource
 
         
     }
-    
-
-    
-    
-    let sections: [SuggestionSection] = {
-        return [
-            ([SuggestionSection(title: "Clothes", suggestions: "T-shirt", "Pants", "Shoes"), SuggestionSection(title: "Electronics", suggestions: "Charger", "Computer")]),
-            ([SuggestionSection(title: "Bathroom", suggestions: "Toothbrush"), SuggestionSection(title: "Blabla", suggestions: "some blabla")])
+ 
+  let sections: [SuggestionSection] = {
+            [
+            SuggestionSection(title: "Clothes", suggestions: ["T-shirt", "Pants", "Shoes"]),
+            SuggestionSection(title: "Electronics", suggestions: ["Charger", "Computer"]),
+            SuggestionSection(title: "Bathroom", suggestions: ["Toothbrush"]),
+            SuggestionSection(title: "Blabla", suggestions: ["some blabla"])
         ]
     }()
     

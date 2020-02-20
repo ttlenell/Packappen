@@ -13,5 +13,9 @@ import UIKit
     var title: String
     var suggestions: [String]
     
+    init(title: String, suggestions: [String]) {
+        self.title = title
+        self.suggestions = suggestions
+    }
     
 }
