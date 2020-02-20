@@ -17,16 +17,15 @@ class SuggestionViewController: UIViewController, UITableViewDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // self.title = "Choose items to add to trip"
-
-    // tableView.dataSource = self
-        
 
 
         
     }
     
-    let sections: [(String, [String])] = {
+
+    
+    
+    let sections: [SuggestionSection] = {
         return [
             ([SuggestionSection(title: "Clothes", suggestions: "T-shirt", "Pants", "Shoes"), SuggestionSection(title: "Electronics", suggestions: "Charger", "Computer")]),
             ([SuggestionSection(title: "Bathroom", suggestions: "Toothbrush"), SuggestionSection(title: "Blabla", suggestions: "some blabla")])
@@ -44,13 +43,11 @@ class SuggestionViewController: UIViewController, UITableViewDataSource
             
         }
 
-var section =  sections[indexPath.section]
+// var section =  sections[indexPath.section]
        
         return cell
     }
     
-
-
 
       func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
