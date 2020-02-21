@@ -13,14 +13,17 @@ class SuggestionViewController: UIViewController, UITableViewDataSource, UITable
 
     @IBOutlet weak var suggestView: UITableView!
     
+    
     var selectedItems: IndexPath?
     let suggestionToTrip = "suggestionToTrip"
  //   var suggestedItems = [SuggestionSection]()
+    
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        suggestView.allowsMultipleSelection = true
         suggestView.delegate = self
         suggestView.dataSource = self as? UITableViewDataSource
 
@@ -57,7 +60,7 @@ class SuggestionViewController: UIViewController, UITableViewDataSource, UITable
 
         section = sections[indexPath.section]
         
-//       let suggestions = section.suggestions[indexPath.row]
+
        
 
         cell.suggestions = sections[indexPath.section].suggestions[indexPath.row]
@@ -91,24 +94,34 @@ class SuggestionViewController: UIViewController, UITableViewDataSource, UITable
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        let section: SuggestionSection
 
+//        section = sections[indexPath.section].suggestions[indexPath.row]
+        
+            let suggestions = section.suggestions[indexPath.row]
+
+        let item: Item
+//        item = incompletedItems[indexPath.row]
+        
+        item.name = suggestions
+        ItemDataAcess.saveContext()
         
     }
 
 
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//         if segue.identifier == self.suggestionToTrip {
-//
-//             guard let selectedItems = self.selectedItems else {return}
-//
-//
-//             let destinationVC = segue.destination as? TodoController
-//
-//         destinationVC?.suggestedItem = suggestedItems[selectedItems.row]
-//
-//
-//
-//         }
-//     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+         if segue.identifier == self.suggestionToTrip {
+
+            guard let selectedItems = self.selectedItems? else {return}
+
+
+             let destinationVC = segue.destination as? TodoController
+
+            destinationVC?.suggestedItem = section.suggestions[selectedItems.row]
+
+
+
+         }
+     }
 }
