@@ -10,15 +10,27 @@ import UIKit
 
 class SuggestionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
+    
+    
+    let suggestionToTrip = "suggestionToTrip"
+    var trip: Trip?
+ 
 
     @IBOutlet weak var suggestView: UITableView!
     
-    
-    var selectedItems: IndexPath?
-    let suggestionToTrip = "suggestionToTrip"
- //   var suggestedItems = [SuggestionSection]()
-    
-    
+    @IBAction func saveSuggestions(_ sender: UIBarButtonItem) {
+        
+        let selectedItems = suggestView.indexPathsForSelectedRows!
+        
+        guard let trip = trip else {return}
+        
+        for indexPath in selectedItems {
+         let suggestions = sections[indexPath.section].suggestions[indexPath.row]
+            _ = ItemDataAcess.createItem(name: suggestions, trip: trip)
+        }
+
+        ItemDataAcess.saveContext()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +39,6 @@ class SuggestionViewController: UIViewController, UITableViewDataSource, UITable
         suggestView.delegate = self
         suggestView.dataSource = self as? UITableViewDataSource
 
-       
-        
     }
  
     var sections: [SuggestionSection] = {
@@ -59,9 +69,6 @@ class SuggestionViewController: UIViewController, UITableViewDataSource, UITable
         var section: SuggestionSection
 
         section = sections[indexPath.section]
-        
-
-       
 
         cell.suggestions = sections[indexPath.section].suggestions[indexPath.row]
         
@@ -80,7 +87,6 @@ class SuggestionViewController: UIViewController, UITableViewDataSource, UITable
         
         guard let sectionHeader = Bundle.main.loadNibNamed(SectionHeader.className, owner: nil, options: nil)?.first as? SectionHeader else {return nil}
         
-       // sectionHeader.setTitle(title: "hej")
         
         sectionHeader.setTitle(title: section.title)
         
@@ -94,34 +100,34 @@ class SuggestionViewController: UIViewController, UITableViewDataSource, UITable
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let section: SuggestionSection
+        // guard let cell = tableView.cellForRow(at: indexPath) else { return }
 
-//        section = sections[indexPath.section].suggestions[indexPath.row]
-        
-            let suggestions = section.suggestions[indexPath.row]
-
-        let item: Item
-//        item = incompletedItems[indexPath.row]
-        
-        item.name = suggestions
-        ItemDataAcess.saveContext()
+        suggestView.cellForRow(at: indexPath as IndexPath)?.accessoryType = .checkmark
+        print("selected")
         
     }
 
+func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    
+       suggestView.cellForRow(at: indexPath as IndexPath)?.accessoryType = .none
+   print("deselected")
+}
+
 
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         if segue.identifier == self.suggestionToTrip {
-
-            guard let selectedItems = self.selectedItems? else {return}
-
-
-             let destinationVC = segue.destination as? TodoController
-
-            destinationVC?.suggestedItem = section.suggestions[selectedItems.row]
-
-
-
-         }
-     }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//         if segue.identifier == self.suggestionToTrip {
+//
+//            guard let selectedItems = saveSuggestions(selectedItems) else {return}
+//
+//
+//             let destinationVC = segue.destination as? TodoController
+//
+//            destinationVC?.incompletedItems =
+//
+//
+//
+//         }
+//
+//}
 }
