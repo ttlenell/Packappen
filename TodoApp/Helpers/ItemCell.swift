@@ -24,6 +24,13 @@ class ItemCell: UITableViewCell {
             
         }
     }
+    
+     var suggestions: String? {
+        didSet {
+            textLabel?.text = suggestions
+        }
+        
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()

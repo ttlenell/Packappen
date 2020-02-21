@@ -12,7 +12,7 @@
             <objects>
                 <viewController id="2bS-fn-pzi" customClass="TodoController" customModule="TodoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0mY-de-rnO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleAspectFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="WtA-7I-gkf">
@@ -58,7 +58,7 @@
                                     <action selector="addTask:" destination="2bS-fn-pzi" id="SHH-bW-Zez"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Presets" style="plain" id="D5Q-aI-z6I">
+                            <barButtonItem title="Suggestions" style="plain" id="D5Q-aI-z6I">
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <segue destination="S1T-l8-V2C" kind="show" id="pix-Sd-v7j"/>
@@ -152,18 +152,18 @@
             <objects>
                 <viewController id="S1T-l8-V2C" customClass="SuggestionViewController" customModule="TodoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mZ5-a9-01e">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a8T-ZW-ImO">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="673"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="a8T-ZW-ImO">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="DbN-gK-HlC">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellID" id="DbN-gK-HlC" customClass="ItemCell" customModule="TodoApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DbN-gK-HlC" id="k2n-Df-tt3">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -179,11 +179,24 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZUJ-Ah-dj6"/>
                     </view>
-                    <navigationItem key="navigationItem" id="tgV-pC-lRa"/>
+                    <navigationItem key="navigationItem" id="tgV-pC-lRa">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="80j-RS-cCF">
+                            <connections>
+                                <segue destination="2bS-fn-pzi" kind="presentation" identifier="suggestionToTrip" modalPresentationStyle="fullScreen" id="2Cz-46-tu8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="suggestView" destination="a8T-ZW-ImO" id="tUc-yg-ZVv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aHy-5p-bVi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4128" y="240"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="pix-Sd-v7j"/>
+        <segue reference="2Cz-46-tu8"/>
+    </inferredMetricsTieBreakers>
 </document>

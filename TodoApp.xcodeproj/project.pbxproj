@@ -10,7 +10,8 @@
 		2F6F02F223E9ACCC00E57F47 /* ItemDataAcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6F02F123E9ACCC00E57F47 /* ItemDataAcess.swift */; };
 		2F6F02F423E9B34F00E57F47 /* NSObject+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6F02F323E9B34F00E57F47 /* NSObject+extensions.swift */; };
 		2F6F02F623E9CB0800E57F47 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6F02F523E9CB0800E57F47 /* ItemCell.swift */; };
-		2F96E99B23FD38020002B8E9 /* SuggestedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96E99A23FD38020002B8E9 /* SuggestedItem.swift */; };
+		2F96E99B23FD38020002B8E9 /* SuggestedSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96E99A23FD38020002B8E9 /* SuggestedSection.swift */; };
+		2F96E99D23FFCCE60002B8E9 /* ios-marketing.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F96E99C23FFCCE60002B8E9 /* ios-marketing.png */; };
 		2FB9D8B223FBE3920035D958 /* SuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB9D8B123FBE3920035D958 /* SuggestionViewController.swift */; };
 		2FBCE02123DCD78E00CBD73D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBCE02023DCD78E00CBD73D /* AppDelegate.swift */; };
 		2FBCE02323DCD78E00CBD73D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBCE02223DCD78E00CBD73D /* SceneDelegate.swift */; };
@@ -30,9 +31,10 @@
 		2F6F02F123E9ACCC00E57F47 /* ItemDataAcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDataAcess.swift; sourceTree = "<group>"; };
 		2F6F02F323E9B34F00E57F47 /* NSObject+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+extensions.swift"; sourceTree = "<group>"; };
 		2F6F02F523E9CB0800E57F47 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
-		2F96E99A23FD38020002B8E9 /* SuggestedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedItem.swift; sourceTree = "<group>"; };
+		2F96E99A23FD38020002B8E9 /* SuggestedSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedSection.swift; sourceTree = "<group>"; };
+		2F96E99C23FFCCE60002B8E9 /* ios-marketing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ios-marketing.png"; path = "TodoApp/System/Assets.xcassets/ios-marketing.imageset/ios-marketing.png"; sourceTree = "<group>"; };
 		2FB9D8B123FBE3920035D958 /* SuggestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionViewController.swift; sourceTree = "<group>"; };
-		2FBCE01D23DCD78E00CBD73D /* TodoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FBCE01D23DCD78E00CBD73D /* PackApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PackApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FBCE02023DCD78E00CBD73D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FBCE02223DCD78E00CBD73D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2FBCE02723DCD78E00CBD73D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -86,7 +88,7 @@
 				2F6F02F323E9B34F00E57F47 /* NSObject+extensions.swift */,
 				2FCF3EDF23EACE4A00EF0E16 /* TripDataAcess.swift */,
 				2FCF3EE123EAD33100EF0E16 /* DataCell.swift */,
-				2F96E99A23FD38020002B8E9 /* SuggestedItem.swift */,
+				2F96E99A23FD38020002B8E9 /* SuggestedSection.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -97,7 +99,6 @@
 				2FBCE02023DCD78E00CBD73D /* AppDelegate.swift */,
 				2FBCE02223DCD78E00CBD73D /* SceneDelegate.swift */,
 				2FBCE02C23DCD79000CBD73D /* Assets.xcassets */,
-				2FBCE02E23DCD79000CBD73D /* LaunchScreen.storyboard */,
 				2FBCE03123DCD79000CBD73D /* Info.plist */,
 			);
 			path = System;
@@ -106,6 +107,7 @@
 		2FBCE01423DCD78E00CBD73D = {
 			isa = PBXGroup;
 			children = (
+				2F96E99C23FFCCE60002B8E9 /* ios-marketing.png */,
 				2FBCE01F23DCD78E00CBD73D /* TodoApp */,
 				2FBCE01E23DCD78E00CBD73D /* Products */,
 			);
@@ -114,7 +116,7 @@
 		2FBCE01E23DCD78E00CBD73D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2FBCE01D23DCD78E00CBD73D /* TodoApp.app */,
+				2FBCE01D23DCD78E00CBD73D /* PackApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,6 +124,7 @@
 		2FBCE01F23DCD78E00CBD73D /* TodoApp */ = {
 			isa = PBXGroup;
 			children = (
+				2FBCE02E23DCD79000CBD73D /* LaunchScreen.storyboard */,
 				2FBCE02623DCD78E00CBD73D /* Main.storyboard */,
 				2F1F1CA723E0C23200D9CE15 /* System */,
 				2F1F1CA623E0C20F00D9CE15 /* Helpers */,
@@ -149,7 +152,7 @@
 			);
 			name = TodoApp;
 			productName = TodoApp;
-			productReference = 2FBCE01D23DCD78E00CBD73D /* TodoApp.app */;
+			productReference = 2FBCE01D23DCD78E00CBD73D /* PackApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -190,6 +193,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F96E99D23FFCCE60002B8E9 /* ios-marketing.png in Resources */,
 				2FCF3ED223E9D07400EF0E16 /* SectionHeader.xib in Resources */,
 				2FBCE03023DCD79000CBD73D /* LaunchScreen.storyboard in Resources */,
 				2FBCE02D23DCD79000CBD73D /* Assets.xcassets in Resources */,
@@ -211,7 +215,7 @@
 				2FBCE02123DCD78E00CBD73D /* AppDelegate.swift in Sources */,
 				2FBCE03823DCD7F900CBD73D /* ToDoController.swift in Sources */,
 				2FCF3EE223EAD33100EF0E16 /* DataCell.swift in Sources */,
-				2F96E99B23FD38020002B8E9 /* SuggestedItem.swift in Sources */,
+				2F96E99B23FD38020002B8E9 /* SuggestedSection.swift in Sources */,
 				2FCF3EDD23EAC24D00EF0E16 /* ListViewController.swift in Sources */,
 				2FB9D8B223FBE3920035D958 /* SuggestionViewController.swift in Sources */,
 				2FBCE02323DCD78E00CBD73D /* SceneDelegate.swift in Sources */,
@@ -368,7 +372,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.thomas.TodoApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PackApp;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -386,7 +390,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.thomas.TodoApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PackApp;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
