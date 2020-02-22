@@ -12,7 +12,7 @@ class SuggestionViewController: UIViewController, UITableViewDataSource, UITable
 {
     
     
-    let suggestionToTrip = "suggestionToTrip"
+    
     var trip: Trip?
  
 
@@ -22,19 +22,24 @@ class SuggestionViewController: UIViewController, UITableViewDataSource, UITable
         
         let selectedItems = suggestView.indexPathsForSelectedRows!
         
-        guard let trip = trip else {return}
+     //   guard let trip = trip else {return}
         
         for indexPath in selectedItems {
          let suggestions = sections[indexPath.section].suggestions[indexPath.row]
-            _ = ItemDataAcess.createItem(name: suggestions, trip: trip)
+            _ = ItemDataAcess.createItem(name: suggestions, trip: trip!)
         }
 
         ItemDataAcess.saveContext()
+        
+        navigationController?.popViewController(animated: true)
+        
+        
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         suggestView.allowsMultipleSelection = true
         suggestView.delegate = self
         suggestView.dataSource = self as? UITableViewDataSource

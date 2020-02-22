@@ -14,6 +14,8 @@ class TodoController: UIViewController, UITableViewDataSource, UITableViewDelega
   
     @IBOutlet weak var itemView: UITableView!
     
+    
+    let toDoToSuggestions = "toDoToSuggestions"
     var trip: Trip?
     var items = [Item]() {
         didSet {
@@ -35,10 +37,10 @@ class TodoController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        itemView.reloadData()
         itemView.delegate = self
         itemView.dataSource = self as? UITableViewDataSource
-        
-        // items = ItemDataAcess.fetchItems()
+ 
         
         items = trip?.items?.array as! [Item]
         
@@ -61,6 +63,13 @@ class TodoController: UIViewController, UITableViewDataSource, UITableViewDelega
             
            
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        items = trip?.items?.array as! [Item]
+        itemView.reloadData()
+        
+        
     }
   
     
@@ -311,7 +320,7 @@ extension TodoController {
                     
                     // save item to cre data
                     
-                    tableView.reloadData()
+                    self.itemView.reloadData()
  
                 }
                 
@@ -377,6 +386,22 @@ extension TodoController {
             return UISwipeActionsConfiguration(actions: [doneAction])
         }
         
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            
+             if segue.identifier == self.toDoToSuggestions {
+                       
+                       guard let trip = self.trip else {return}
+                       
+               
+                       let destinationVC = segue.destination as? SuggestionViewController
+                
+                destinationVC?.trip = trip
+       
+
+                      
+                       
+                   }
+        }
    
         
     }
