@@ -27,7 +27,7 @@ class ListViewController: UIViewController,UITableViewDataSource, UITableViewDel
         trips = TripDataAcess.fetchTrips()
         self.title = "PackApp"
         
-        
+        overrideUserInterfaceStyle = .light
         
         listView.delegate = self
         listView.dataSource = self as? UITableViewDataSource
@@ -121,7 +121,7 @@ class ListViewController: UIViewController,UITableViewDataSource, UITableViewDel
         
         guard let sectionHeader = Bundle.main.loadNibNamed(SectionHeader.className, owner: nil, options: nil)?.first as? SectionHeader else {return nil}
         
-        sectionHeader.setTitle(title: "Trips!")
+        sectionHeader.setTitle(title: "My trips")
         
         return sectionHeader
     }

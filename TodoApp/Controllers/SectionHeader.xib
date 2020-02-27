@@ -14,13 +14,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhc-KA-bWz">
-                    <rect key="frame" x="20" y="54" width="374" height="31"/>
+                    <rect key="frame" x="20" y="54" width="374" height="808"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <attributedString key="attributedText">
                         <fragment content="Label">
                             <attributes>
-                                <color key="NSColor" red="0.47005412989838502" green="0.49765603923680923" blue="1" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="displayP3"/>
-                                <font key="NSFont" metaFont="system" size="25"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <font key="NSFont" size="31" name="TrebuchetMS"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                             </attributes>
                         </fragment>
                     </attributedString>
@@ -28,10 +29,14 @@
                     <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="dhc-KA-bWz" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="HyL-8O-Y9g"/>
+                <constraint firstItem="dhc-KA-bWz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Mbc-YZ-Ebw"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="dhc-KA-bWz" secondAttribute="bottom" id="Nh7-h8-vlF"/>
                 <constraint firstItem="dhc-KA-bWz" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="O8r-yQ-1z6"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dhc-KA-bWz" secondAttribute="trailing" constant="20" id="hd8-fg-va9"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dhc-KA-bWz" secondAttribute="trailing" id="jU8-0l-wmP"/>
                 <constraint firstItem="dhc-KA-bWz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="k5D-Ao-zhr"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

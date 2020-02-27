@@ -37,6 +37,8 @@ class TodoController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        overrideUserInterfaceStyle = .light
+        
         itemView.reloadData()
         itemView.delegate = self
         itemView.dataSource = self as? UITableViewDataSource
@@ -97,10 +99,7 @@ class TodoController: UIViewController, UITableViewDataSource, UITableViewDelega
                            TripDataAcess.saveContext()
                            
                            // save item to cre data
-                        
-                        
-                           
-                           print("ny titel")
+
                            
                        
                        }
@@ -112,7 +111,7 @@ class TodoController: UIViewController, UITableViewDataSource, UITableViewDelega
                        // add textfield for input to alert controller
                        alertController.addTextField { textfield in
                            
-                           textfield.placeholder = "Change a trip's name"
+                           textfield.placeholder = "Enter the new trip name"
                            textfield.addTarget(self, action: #selector(self.handleTextChanged), for: .editingChanged)
                        }
                        // add actions to alert controller
@@ -201,7 +200,7 @@ extension TodoController {
     
     // sets height for sections 0 and 1, "to be packed" and "packed"
      func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-          return 58
+          return 65
     }
      func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let sectionHeader = Bundle.main.loadNibNamed(SectionHeader.className, owner: nil, options: nil)?.first as? SectionHeader else {return nil}
@@ -308,7 +307,7 @@ extension TodoController {
                 let alertController = UIAlertController(title: "Change item name", message: nil, preferredStyle: .alert)
                 
                 // set up actions
-                let addAction = UIAlertAction(title: "Change", style: .default) { _ in
+                let addAction = UIAlertAction(title: "Save", style: .default) { _ in
                     
                     
                 
@@ -331,7 +330,7 @@ extension TodoController {
                 // add textfield for input to alert controller
                 alertController.addTextField { textfield in
                     
-                    textfield.placeholder = "Change a item name"
+                    textfield.placeholder = "Enter the new name"
                     textfield.addTarget(self, action: #selector(self.handleTextChanged), for: .editingChanged)
                 }
                 // add actions to alert controller

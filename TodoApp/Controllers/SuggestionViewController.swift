@@ -38,8 +38,10 @@ class SuggestionViewController: UIViewController, UITableViewDataSource, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
+        self.title = "Suggestions"
+
+        overrideUserInterfaceStyle = .light
         suggestView.allowsMultipleSelection = true
         suggestView.delegate = self
         suggestView.dataSource = self as? UITableViewDataSource
@@ -48,10 +50,10 @@ class SuggestionViewController: UIViewController, UITableViewDataSource, UITable
  
     var sections: [SuggestionSection] = {
             [
-            SuggestionSection(title: "Clothes", suggestions: ["T-shirt", "Pants", "Shoes", "Swimwear", "Dress"]),
+            SuggestionSection(title: "Clothes", suggestions: ["T-shirts", "Pants", "Shoes", "Swimwear", "Dress", "Underwear"]),
             SuggestionSection(title: "Electronics", suggestions: ["Charger", "Computer", "Travel speakers", "Adapters", "Headphones" ]),
             SuggestionSection(title: "Bathroom", suggestions: ["Toothbrush", "Schampoo & Soap", "Shaver", "Deodorant", "Hairbrush/Comb",    ]),
-            SuggestionSection(title: "Good to have", suggestions: ["Sun Protection","Medical travel kit","Travel pillow"])
+            SuggestionSection(title: "Good to have", suggestions: ["Sun Protection","Medical travel kit","Travel pillow", "Book"])
         ]
     }()
     
@@ -71,6 +73,8 @@ class SuggestionViewController: UIViewController, UITableViewDataSource, UITable
             
         }
         
+       
+        
         var section: SuggestionSection
 
         section = sections[indexPath.section]
@@ -80,6 +84,8 @@ class SuggestionViewController: UIViewController, UITableViewDataSource, UITable
         return cell
         
     }
+    
+    
     
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -104,35 +110,17 @@ class SuggestionViewController: UIViewController, UITableViewDataSource, UITable
       }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        // guard let cell = tableView.cellForRow(at: indexPath) else { return }
+
 
         suggestView.cellForRow(at: indexPath as IndexPath)?.accessoryType = .checkmark
-        print("selected")
+
         
     }
 
 func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
     
        suggestView.cellForRow(at: indexPath as IndexPath)?.accessoryType = .none
-   print("deselected")
+ 
 }
 
-
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//         if segue.identifier == self.suggestionToTrip {
-//
-//            guard let selectedItems = saveSuggestions(selectedItems) else {return}
-//
-//
-//             let destinationVC = segue.destination as? TodoController
-//
-//            destinationVC?.incompletedItems =
-//
-//
-//
-//         }
-//
-//}
 }

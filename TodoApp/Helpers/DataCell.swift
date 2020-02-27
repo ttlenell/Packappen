@@ -19,13 +19,13 @@ class DataCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
         
-        
+        textLabel?.font = UIFont(name:"Avenir", size:30)
         backgroundColor = UIColor.clear
-        contentView.layer.borderWidth = 2.0
+        contentView.layer.borderWidth = 4.0
         contentView.layer.cornerRadius = 20
+        
 
         
     }
