@@ -15,6 +15,7 @@ class TodoController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var itemView: UITableView!
     
     
+
     let toDoToSuggestions = "toDoToSuggestions"
     var trip: Trip?
     var items = [Item]() {
@@ -33,7 +34,9 @@ class TodoController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var incompletedItems = [Item]()
 
+    
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -165,6 +168,7 @@ class TodoController: UIViewController, UITableViewDataSource, UITableViewDelega
         alertController.addTextField { textfield in
             
             textfield.placeholder = "Enter a packing item"
+            textfield.autocapitalizationType = .sentences
             textfield.addTarget(self, action: #selector(self.handleTextChanged), for: .editingChanged)
         }
         // add actions to alert controller
@@ -331,6 +335,7 @@ extension TodoController {
                 alertController.addTextField { textfield in
                     
                     textfield.placeholder = "Enter the new name"
+                    textfield.autocapitalizationType = .sentences
                     textfield.addTarget(self, action: #selector(self.handleTextChanged), for: .editingChanged)
                 }
                 // add actions to alert controller

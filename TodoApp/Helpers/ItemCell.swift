@@ -15,11 +15,19 @@ class ItemCell: UITableViewCell {
             textLabel?.text = item?.name
 
             if item?.isDone == true {
+                contentView.layer.borderColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+                contentView.layer.borderWidth = 4.0
+                contentView.layer.cornerRadius = 20
                 
-                backgroundColor = #colorLiteral(red: 0.4747263789, green: 0.7589706779, blue: 0.3847932816, alpha: 1)
+                
             } else if item?.isDone == false {
                 
-                backgroundColor = #colorLiteral(red: 0.7314276099, green: 0.1349792182, blue: 0.1907772124, alpha: 1)
+                contentView.layer.borderWidth = 4.0
+                contentView.layer.cornerRadius = 20
+                contentView.layer.borderColor = #colorLiteral(red: 0.7649499774, green: 0.4034959078, blue: 0.4130340517, alpha: 1)
+                
+                
+
             }
             
         }
@@ -38,7 +46,8 @@ class ItemCell: UITableViewCell {
         
         backgroundColor = UIColor.clear
         contentView.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        textLabel?.font = UIFont(name:"Avenir", size:18)
+        textLabel?.font = UIFont(name:"Avenir-bold", size:28)
+
       
         
 

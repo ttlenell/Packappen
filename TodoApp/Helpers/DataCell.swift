@@ -25,6 +25,7 @@ class DataCell: UITableViewCell {
         backgroundColor = UIColor.clear
         contentView.layer.borderWidth = 4.0
         contentView.layer.cornerRadius = 20
+        textLabel?.textAlignment = .center  
         
 
         

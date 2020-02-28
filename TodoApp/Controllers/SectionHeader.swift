@@ -12,6 +12,7 @@ class SectionHeader: UITableViewHeaderFooterView {
 
     @IBOutlet weak var sectionTitle: UILabel!
     
+    
     func setTitle(title: String) {
         
         sectionTitle.text = title

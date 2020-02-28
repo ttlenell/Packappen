@@ -65,10 +65,10 @@ class ListViewController: UIViewController,UITableViewDataSource, UITableViewDel
             guard let name = alertController.textFields?.first?.text else {return}
             
             
-            // create item in core data
+            // create trip in core data
             guard let trip = TripDataAcess.createTrip(name: name) else {return}
             
-            // add item to table view
+            // add trip to table view
             self.trips.insert(trip, at: 0)
             
             let indexPath = IndexPath(row: 0, section: 0)
@@ -86,6 +86,7 @@ class ListViewController: UIViewController,UITableViewDataSource, UITableViewDel
         alertController.addTextField { textfield in
             
             textfield.placeholder = "Enter a new trip"
+            textfield.autocapitalizationType = .sentences
             textfield.addTarget(self, action: #selector(self.handleTextChanged), for: .editingChanged)
         }
         // add actions to alert controller

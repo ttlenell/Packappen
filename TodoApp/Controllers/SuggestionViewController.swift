@@ -21,8 +21,7 @@ class SuggestionViewController: UIViewController, UITableViewDataSource, UITable
     @IBAction func saveSuggestions(_ sender: UIBarButtonItem) {
         
         let selectedItems = suggestView.indexPathsForSelectedRows!
-        
-     //   guard let trip = trip else {return}
+
         
         for indexPath in selectedItems {
          let suggestions = sections[indexPath.section].suggestions[indexPath.row]
@@ -50,9 +49,10 @@ class SuggestionViewController: UIViewController, UITableViewDataSource, UITable
  
     var sections: [SuggestionSection] = {
             [
-            SuggestionSection(title: "Clothes", suggestions: ["T-shirts", "Pants", "Shoes", "Swimwear", "Dress", "Underwear"]),
+            SuggestionSection(title: "Essentials", suggestions: ["Passport", "Cash", "Travel iteniary"]),
+            SuggestionSection(title: "Clothes", suggestions: ["T-shirts", "Pants", "Shoes", "Swimwear", "Dress", "Underwear", "Suit", "Flip-flops"]),
             SuggestionSection(title: "Electronics", suggestions: ["Charger", "Computer", "Travel speakers", "Adapters", "Headphones" ]),
-            SuggestionSection(title: "Bathroom", suggestions: ["Toothbrush", "Schampoo & Soap", "Shaver", "Deodorant", "Hairbrush/Comb",    ]),
+            SuggestionSection(title: "Bathroom", suggestions: ["Toothbrush", "Shampoo & Soap", "Shaver", "Deodorant", "Hairbrush/Comb","Hairspray"]),
             SuggestionSection(title: "Good to have", suggestions: ["Sun Protection","Medical travel kit","Travel pillow", "Book"])
         ]
     }()
