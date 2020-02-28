@@ -50,11 +50,11 @@ class SuggestionViewController: UIViewController, UITableViewDataSource, UITable
  
     var sections: [SuggestionSection] = {
             [
-            SuggestionSection(title: "Essentials", suggestions: ["Passport", "Cash", "Travel iteniary"]),
-            SuggestionSection(title: "Clothes", suggestions: ["T-shirts", "Pants", "Shoes", "Swimwear", "Dress", "Underwear", "Suit", "Flip-flops"]),
-            SuggestionSection(title: "Electronics", suggestions: ["Charger", "Computer", "Travel speakers", "Adapters", "Headphones" ]),
-            SuggestionSection(title: "Bathroom", suggestions: ["Toothbrush", "Shampoo & Soap", "Shaver", "Deodorant", "Hairbrush/Comb","Hairspray"]),
-            SuggestionSection(title: "Good to have", suggestions: ["Sun Protection","Medical travel kit","Travel pillow", "Book"])
+            SuggestionSection(title: "❗️ Essentials", suggestions: ["Passport", "Cash", "Travel iteniary"]),
+            SuggestionSection(title: "🥼 Clothes", suggestions: ["T-shirts", "Pants", "Shoes", "Swimwear", "Dress", "Underwear", "Suit", "Flip-flops"]),
+            SuggestionSection(title: "📱 Electronics", suggestions: ["Charger", "Computer", "Travel speakers", "Adapters", "Headphones" ]),
+            SuggestionSection(title: "🛁  Bathroom", suggestions: ["Toothbrush", "Shampoo & Soap", "Shaver", "Deodorant", "Hairbrush/Comb","Hairspray"]),
+            SuggestionSection(title: "💡 Good to have", suggestions: ["Sun Protection","Medical travel kit","Travel pillow", "Book"])
         ]
     }()
     

@@ -84,7 +84,7 @@ class TodoController: UIViewController, UITableViewDataSource, UITableViewDelega
                    var trip: Trip
                 trip = self.trip!
                    
-                       // guard let trip = trip else {return}
+
                        
                        // alert controller
                        let alertController = UIAlertController(title: "Change trip name", message: nil, preferredStyle: .alert)
@@ -99,10 +99,10 @@ class TodoController: UIViewController, UITableViewDataSource, UITableViewDelega
                           
                            trip.name = name
                         self.title = name
-                           TripDataAcess.saveContext()
+                           
                            
                            // save item to cre data
-
+                        TripDataAcess.saveContext()
                            
                        
                        }
@@ -209,9 +209,9 @@ extension TodoController {
      func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let sectionHeader = Bundle.main.loadNibNamed(SectionHeader.className, owner: nil, options: nil)?.first as? SectionHeader else {return nil}
         if section == 0 {
-            sectionHeader.setTitle(title: "To be packed")
+            sectionHeader.setTitle(title: " To be packed")
         } else {
-            sectionHeader.setTitle(title: "Packed")
+            sectionHeader.setTitle(title: "🧳 Packed")
         }
         return sectionHeader
     }
