@@ -11,7 +11,8 @@ import UIKit
 class SuggestionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
     
-    
+    // comment for update
+        
     
     var trip: Trip?
  
